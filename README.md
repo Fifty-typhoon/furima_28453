@@ -2,16 +2,17 @@
 
 ## usesテーブル
 
-| Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-|nickname       | string  | null: false |
-|email          | string  | null: false |
-|password       | string  | null: false |
-|first_name     | string  | null: false |
-|last_name      | string  | null: false |
-|year_birthday  | integer | null: false |
-|month_birthday | integer | null: false |
-|day_birthday   | integer | null: false |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+| first_name      | string | null: false |
+| last_name       | string | null: false |
+| kana_first_name | string | null: false |
+| kana_last_name  | string | null: false |
+| birthday        | date   | null: false | 
+
 
 ### Association
 
@@ -21,16 +22,14 @@
 
 ## ordersテーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| credit_card_number | integer | null: false |
-| expiration_date    | integer | null: false |
-| csv                | integer | null: false |
-| post_number        | integer | null: false |
-| prefecture         | string  | null: false |
-| city               | string  | null: false |
-| address            | strind  | null: false |
-| phone_number       | string  | null: false |
+| Column               | Type    | Options     |
+| -------------------- | ------- | ----------- |
+| post_number          | string  | null: false |
+| prefecture           | integer | null: false |
+| city                 | string  | null: false |
+| address              | strind  | null: false |
+| billing_address_line | string  |             |
+| phone_number         | string  | null: false |
 
 ### Association
 
@@ -40,19 +39,19 @@
 
 ## itemsテーブル
 
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| image              | text       | null: false                    |
-| name               | string     | null: false                    |
-| detail             | text       | null: false                    |
-| category           | string     | null: false                    |
-| state              | string     | null: false                    |
-| delivery_fee       | boolean    | null: false                    |
-| ship_from_location | string     | null: false                    | 
-| delivery_date      | integer    | null: false                    | 
-| price              | integer    | null: false                    |
-| existense          | boolean    |                                |
-| user               | references | null: false, foreign_key: true |
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| image                 | text       | null: false                    |
+| name                  | string     | null: false                    |
+| detail                | text       | null: false                    |
+| category              | integer    | null: false                    |
+| state                 | integer    | null: false                    |
+| delivery_fee          | integer    | null: false                    |
+| ship_from_location    | integer    | null: false                    | 
+| delivery_date         | integer    | null: false                    | 
+| price                 | integer    | null: false                    |
+| user                  | references | null: false, foreign_key: true |
+| order                 | references | null: false, foreign_key: true |
 
 ### Association
 
