@@ -32,7 +32,7 @@
 
 ### Association
 
-- has_one :purchase
+- belongs_to :purchase
 
 ## itemsテーブル
 
@@ -67,7 +67,7 @@
 - belongs_to :user
 - belongs_to :item
 - has_one :comment
-- belongs_to :order
+- has_one :order
 
 ## commentsテーブル
 
