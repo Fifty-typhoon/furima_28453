@@ -32,9 +32,7 @@
 
 ### Association
 
-- has_many :comments
-- belongs_to :item
-- belongs_to :purchase
+- has_one :purchase
 
 ## itemsテーブル
 
@@ -54,21 +52,22 @@
 ### Association
 
 - belongs_to :user
-- has_one :oredr
 - has_one :purchase
 
 ## purchasesテーブル
 
-| Column | Type    | Options     |
-| ------ | ------- | ----------- |
-| user   | integer | null: false |
-| item   | integer | null: false |
+| Column | Type    | Options                        |
+| ------ | ------- | ------------------------------ |
+| user   | integer | null: false, foreign_key: true |
+| item   | integer | null: false, foreign_key: true |
+| order  | integer | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
 - has_one :comment
+- belongs_to :order
 
 ## commentsテーブル
 
@@ -76,7 +75,7 @@
 | -------------- | ---------- | ------------------------------ |
 | comments_text  | text       |                                |
 | comments_image | text       |                                |
-| order          | references | null: false, foreign_key: true |
+| purchase       | references | null: false, foreign_key: true |
 | user           | references | null: false, foreign_key: true |
 
 ### Association
