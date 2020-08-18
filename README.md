@@ -21,14 +21,15 @@
 
 ## ordersテーブル
 
-| Column               | Type    | Options     |
-| -------------------- | ------- | ----------- |
-| post_number          | string  | null: false |
-| prefecture           | integer | null: false |
-| city                 | string  | null: false |
-| address              | strind  | null: false |
-| billing_address_line | string  |             |
-| phone_number         | string  | null: false |
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| post_number          | string     | null: false                    |
+| prefecture           | integer    | null: false                    |
+| city                 | string     | null: false                    |
+| address              | strind     | null: false                    |
+| billing_address_line | string     |                                |
+| phone_number         | string     | null: false                    |
+| purchase             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -60,7 +61,6 @@
 | ------ | ------- | ------------------------------ |
 | user   | integer | null: false, foreign_key: true |
 | item   | integer | null: false, foreign_key: true |
-| order  | integer | null: false, foreign_key: true |
 
 ### Association
 
