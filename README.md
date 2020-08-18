@@ -36,6 +36,7 @@
 - belongs_to :user
 - has_many :comments
 - belongs_to :item
+- belongs_to :address
 
 ## itemsテーブル
 
@@ -69,6 +70,7 @@
 
 - belongs_to :user
 - belongs_to :item
+- belongs_to :address
 
 ## commentsテーブル
 
@@ -83,3 +85,14 @@
 
 - belongs_to :user
 - belongs_to :order
+
+## addressesテーブル
+
+| Column | Type    | Options     |
+| ------ | ------- | ----------- |
+| order  | integer | null: false |
+
+### Association
+
+- belongs_to :order
+- belongs_to :purchase
