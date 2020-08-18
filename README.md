@@ -13,12 +13,12 @@
 | kana_last_name  | string | null: false |
 | birthday        | date   | null: false | 
 
-
 ### Association
 
 - has_many :orders
 - has_many :items
 - has_many :comments
+- has_many :purchases
 
 ## ordersテーブル
 
@@ -33,15 +33,15 @@
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_many :comments
-- belongs_to :items
+- belongs_to :item
 
 ## itemsテーブル
 
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
-| image                 | text       | null: false                    |
+| image                 | string     | null: false                    |
 | name                  | string     | null: false                    |
 | detail                | text       | null: false                    |
 | category              | integer    | null: false                    |
@@ -51,12 +51,24 @@
 | delivery_date         | integer    | null: false                    | 
 | price                 | integer    | null: false                    |
 | user                  | references | null: false, foreign_key: true |
-| order                 | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :oredrs
+- belongs_to :user
+- has_one :oredr
+- has_one :purchase
+
+## purchasesテーブル
+
+| Column | Type    | Options     |
+| ------ | ------- | ----------- |
+| user   | integer | null: false |
+| item   | integer | null: false |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
 
 ## commentsテーブル
 
@@ -69,5 +81,5 @@
 
 ### Association
 
-- belongs_to :users
-- belongs_to :orders
+- belongs_to :user
+- belongs_to :order
