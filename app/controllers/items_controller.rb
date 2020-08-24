@@ -10,11 +10,11 @@ class ItemsController < ApplicationController
 
   def new #出品ページの表示アクション
     @item = Item.new
-    #render :new
   end
 
   def create #出品のデータを登録するときのアクション
-    Item.create(item_params)
+    @item = Item.create(item_params)
+    binding.pry
     redirect_to root_path
   end
 
@@ -27,6 +27,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :detail, :image, :price)
+    params.require(:item).permit(:image, :name, :detail, :category_id, :state_id, :delivery_fee_id, :ship_from_location_id, :delivery_date_id, :price) #.merge(user_id: current_user.id)
   end
 end
