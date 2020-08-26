@@ -11,9 +11,9 @@ class Item < ApplicationRecord
   has_one :purchase
   has_one_attached :image
 
-  
+
   with_options presence: true do
-    validates :image
+    validates :image #必要なさそう
     validates :name
     validates :detail
     validates :category
@@ -21,7 +21,7 @@ class Item < ApplicationRecord
     validates :delivery_fee
     validates :ship_from_location
     validates :delivery_date
-    validates :price
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   end
 
   with_options numericality: { other_than: 1 } do
@@ -31,4 +31,7 @@ class Item < ApplicationRecord
     validates :ship_from_location_id
     validates :delivery_date_id
   end
+
+  NUMBER = /\A[0-9]+\z/.freeze
+  validates_format_of :price, with:NUMBER
 end
