@@ -15,6 +15,8 @@ class User < ApplicationRecord
     validates :birthday
   end
 
+  has_many :items
+
   EMAIL_REGEX = /@.+/.freeze
   validates_format_of :email, with:EMAIL_REGEX
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
