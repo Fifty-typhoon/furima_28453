@@ -13,7 +13,7 @@ class Item < ApplicationRecord
 
 
   with_options presence: true do
-    validates :image #必要なさそう
+    validates :image
     validates :name
     validates :detail
     validates :category

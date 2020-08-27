@@ -4,6 +4,7 @@ window.addEventListener('load' , function() {
   let profit = document.getElementById("profit")
 
   priceInput.addEventListener('keyup', function() { 
+    console.log("ok");
     const primeValue = priceInput.value;
 
     if (primeValue >= 300 && primeValue <= 9999999) {
