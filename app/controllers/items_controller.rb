@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def create #出品のデータを登録するときのアクション
-    @item = Item.new(item_params) #createメソッドから変更
+    @item = Item.new(item_params) 
     if @item.valid?
       @item.save
       return redirect_to root_path
@@ -27,7 +27,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to root_path
-    # render action: :index
   end
 
   def move_to_sign_in
