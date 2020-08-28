@@ -2,11 +2,11 @@ class ItemsController < ApplicationController
 
   before_action :move_to_sign_in, except: [:index, :show]
   def index
-    @item = Item.all
+    @item = Item.all.order("created_at DESC")
   end
   
   def show
-    #@item = Item.find
+    @item = Item.find(params[:id])
   end
 
   def new #出品ページの表示アクション
@@ -23,6 +23,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    return render action: :index
+  end
 
   def move_to_sign_in
     unless user_signed_in?
