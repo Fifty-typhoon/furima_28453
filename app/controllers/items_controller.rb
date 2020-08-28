@@ -2,12 +2,9 @@ class ItemsController < ApplicationController
 
   before_action :move_to_sign_in, except: [:index, :show]
   def index
-    @item = Item.all
+    @item = Item.all.order("created_at DESC")
   end
   
-  def show
-    #@item = Item.find
-  end
 
   def new #出品ページの表示アクション
     @item = Item.new
