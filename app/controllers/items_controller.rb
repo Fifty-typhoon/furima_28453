@@ -1,12 +1,13 @@
 class ItemsController < ApplicationController
 
   before_action :move_to_sign_in, except: [:index, :show]
+  before_action :generate_instance, except: [:index, :new, :create]
+
   def index
     @item = Item.all.order("created_at DESC")
   end
   
   def show
-    @item = Item.find(params[:id])
   end
 
   def new #出品ページの表示アクション
@@ -24,15 +25,22 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to root_path
+    if @item.user_id == current_user.id
+      @item.destroy
+      return redirect_to root_path
+    else
+      render action: :show
+    end
   end
 
   def move_to_sign_in
     unless user_signed_in?
       redirect_to user_session_path
     end
+  end
+
+  def generate_instance
+    @item = Item.find(params[:id])
   end
 
   private
