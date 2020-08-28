@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
     @item = Item.all.order("created_at DESC")
   end
   
+  def show
+    @item = Item.find(params[:id])
+  end
 
   def new #出品ページの表示アクション
     @item = Item.new
