@@ -33,6 +33,17 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @item.update(item_params) 
+      return redirect_to item_path(@item.id)
+    else
+      render action: :edit
+    end
+  end
+
   def move_to_sign_in
     unless user_signed_in?
       redirect_to user_session_path
