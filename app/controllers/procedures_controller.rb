@@ -1,19 +1,20 @@
 class ProceduresController < ApplicationController
 
   before_action :move_to_sign_in
-
+  before_action :make_instance, only: [:index, :new]
+  before_action :find_instance, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
+    if (current_user.id == @item.user_id) || (@item.purchase.present?)
+      redirect_to root_path
+    end
   end
 
   def new
-    @order = Order.new
   end
 
-
   def create
-    @order = Order.create(order_params)
+    @order = OrderPurchase.new(order_params)
     if @order.valid?
       pay_item
       @order.save
@@ -30,17 +31,25 @@ class ProceduresController < ApplicationController
     end
   end
 
+  def make_instance
+    @order = OrderPurchase.new
+  end
+
+  def find_instance
+    @item = Item.find(params[:item_id])
+  end
+
 
   private
 
   def order_params
-    params.require(:order).permit(:token, :post_number, :prefecture_id, :city, :address, :billing_address_line, :phone_number).merge(:user_id, :item_id)
+    params.permit(:token, :post_number, :prefecture_id, :city, :address, :billing_address_line, :phone_number).merge(user_id: current_user.id, item_id: @item.id)
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_dd98d9fc72b15097812528e6"
+    Payjp.api_key = ENV["PAYJP_SECLET_KEY"]
     Payjp::Charge.create(
-      amount: item.price,
+      amount: @item.price,
       card: order_params[:token],
       currency:'jpy'
     )

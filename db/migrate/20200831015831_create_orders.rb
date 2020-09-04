@@ -6,7 +6,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :city,                 null: false, default: ""
       t.string :address,              null: false, default: ""
       t.string :billing_address_line,              default: ""
-      t.integer :phone_number,        null: false
+      t.string :phone_number,        null: false
       t.references :purchase,         null: false,              foreign_key: true
       t.timestamps
     end
