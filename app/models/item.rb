@@ -5,12 +5,10 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_fee
   belongs_to_active_hash :ship_from_location
   belongs_to_active_hash :delivery_date
-  
-  
+
   belongs_to :user
   has_one :purchase
   has_one_attached :image
-
 
   with_options presence: true do
     validates :image
@@ -21,7 +19,7 @@ class Item < ApplicationRecord
     validates :delivery_fee
     validates :ship_from_location
     validates :delivery_date
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   end
 
   with_options numericality: { other_than: 1 } do
@@ -33,5 +31,5 @@ class Item < ApplicationRecord
   end
 
   NUMBER = /\A[0-9]+\z/.freeze
-  validates_format_of :price, with:NUMBER
+  validates_format_of :price, with: NUMBER
 end
