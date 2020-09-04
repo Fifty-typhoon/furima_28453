@@ -6,7 +6,5 @@ FactoryBot.define do
     city           { Gimei.address.city.to_s }
     address        { Gimei.address.town.to_s }
     phone_number   { '12345678912' }
-
-    # association :user , :item
   end
 end
