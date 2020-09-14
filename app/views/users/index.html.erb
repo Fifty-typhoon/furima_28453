@@ -1,20 +1,18 @@
 <%= render "shared/second-header"%>
 
-
-<div class='form-wrap'>
-  <div class='form-header'>
-    <h3>
-      初めてのご利用の方は
-    </h3>
+<div class='registration-main'>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h3 class='login-type-text'>
+        初めてのご利用の方は
+      </h3>
+    </div>
+    <div class='login-type'>
+      <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, class: 'blue_btn', method: :post %>
+      <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, class: 'white_btn', method: :post %>
+      <%= link_to 'メールアドレスで登録', new_user_registration_path, class: 'red_btn' %>
+    </div>
   </div>
-  <div class='registration-type'>
-    <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, class: 'blue_btn', method: :post %>
-    <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, class: 'white_btn', method: :post %>
-    <%= link_to 'メールアドレスで登録', new_user_registration_path, class: 'red_btn' %>
-  </div>
-
-  <%#= render 'shared/error_messages', model: f.object%>
-
 </div>
 
 
