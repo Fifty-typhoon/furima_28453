@@ -7,6 +7,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def new # 出品ページの表示アクション

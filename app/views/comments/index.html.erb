@@ -1,0 +1,26 @@
+<%= render "shared/header" %>
+
+<div class="comments">
+      <h1 class="comment-list">＜コメント一覧＞</h1>
+      <div class="comment-contents">
+        <div class="comment-content-background">
+          <div class="comment-content">
+            <% if @comments %>
+              <% @comments.each do |comment| %>
+                <div class="upper-content">
+                  <%= l comment.created_at %>
+                </div>
+                <div class="lower-content">
+                  <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+                  <%= comment.comment %>
+                </div>
+              <% end %>
+            <% else %>
+              <p>コメントはありません</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+</div>
+
+<%= render "shared/footer" %>

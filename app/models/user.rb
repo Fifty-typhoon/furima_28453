@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :purchases
   has_many :sns_credentials
+  has_many :comments
 
   EMAIL_REGEX = /@.+/.freeze
   validates_format_of :email, with: EMAIL_REGEX

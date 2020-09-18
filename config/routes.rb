@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new]
   resources :items do
     resources :procedures, only: [:index, :new, :create]
+    resources :comments, only: [:index, :create]
   end
 end
