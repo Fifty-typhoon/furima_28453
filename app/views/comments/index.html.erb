@@ -11,7 +11,7 @@
                   <%= l comment.created_at %>
                 </div>
                 <div class="lower-content">
-                  <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+                  <strong><%= comment.user.nickname %>：</strong><%#= link_to comment.user.nickname, "/users/#{comment.user_id}" %>
                   <%= comment.comment %>
                 </div>
               <% end %>
