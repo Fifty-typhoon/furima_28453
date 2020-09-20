@@ -5,7 +5,7 @@
       <div class="comment-contents">
         <div class="comment-content-background">
           <div class="comment-content">
-            <% if @comments %>
+            <% if @comments != nil %>
               <% @comments.each do |comment| %>
                 <div class="upper-content">
                   <%= l comment.created_at %>
@@ -16,7 +16,7 @@
                 </div>
               <% end %>
             <% else %>
-              <p>コメントはありません</p>
+              <div class="lower-content">コメントはありません</div>
             <% end %>
           </div>
         </div>
