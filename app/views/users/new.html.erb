@@ -1,0 +1,20 @@
+<%= render "shared/second-header"%>
+
+<div class='registration-main'>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h3 class='login-type-text'>
+        既にユーザー登録がお済みの方は
+      </h3>
+    </div>
+    <div class='login-type'>
+        <%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post, class: 'blue_btn', method: :post %>
+        <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, class: 'white_btn', method: :post %>
+        <%= link_to 'メールアドレスでログイン', new_user_session_path, class: 'red_btn' %>
+    </div>
+  </div>
+</div>
+
+
+
+<%= render "shared/second-footer"%>

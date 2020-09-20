@@ -7,6 +7,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def new # 出品ページの表示アクション
@@ -44,7 +46,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_sign_in
-    redirect_to user_session_path unless user_signed_in?
+    redirect_to new_user_path unless user_signed_in?
   end
 
   def generate_instance
